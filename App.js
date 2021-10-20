@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View, StatusBar } from "react-native";
+import { Text, StatusBar } from "react-native";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import {
@@ -16,7 +16,8 @@ import {
 	Lato_900Black_Italic,
 } from "@expo-google-fonts/lato";
 
-import Home from "./src/pages/Home/HomeScreen";
+import HomeScreen from "./src/pages/Home/HomeScreen";
+import GroubScreen from "./src/pages/Groub/GroubScreen";
 
 const Stack = createNativeStackNavigator();
 const Theme = {
@@ -38,11 +39,24 @@ const App = () => {
 		return (
 			<NavigationContainer theme={Theme}>
 				<StatusBar backgroundColor={"#FFF"} barStyle={"dark-content"} />
-				<Stack.Navigator>
+				<Stack.Navigator initialRouteName={"HomeScreen"}>
 					<Stack.Screen
-						name="Home"
-						component={Home}
+						name="HomeScreen"
+						component={HomeScreen}
 						options={{ headerShown: false }}
+					/>
+					<Stack.Screen
+						name="GroubScreen"
+						component={GroubScreen}
+						options={{
+							headerStyle: {
+								justifyContent: "center",
+							},
+							headerTitleStyle: {
+								fontFamily: "Lato_400Regular",
+								fontSize: 14,
+							},
+						}}
 					/>
 				</Stack.Navigator>
 			</NavigationContainer>

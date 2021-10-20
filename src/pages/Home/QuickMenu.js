@@ -2,7 +2,6 @@ import React from "react";
 import { View, Text, StyleSheet, Pressable } from "react-native";
 import color from "../../constant/color";
 import { MaterialIcons } from "@expo/vector-icons";
-// import { Shadow } from "react-native-shadow-2";
 
 const QuickMenu = () => {
 	return (

@@ -1,11 +1,11 @@
 import React from "react";
-import { StyleSheet, View, Text, ScrollView, StatusBar } from "react-native";
+import { StyleSheet, Text, ScrollView } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import color from "../../constant/color";
 import QuickMenu from "./QuickMenu";
 import Groub from "./Groub";
 
-const Home = () => {
+const HomeScreen = ({ navigation }) => {
 	return (
 		<ScrollView style={styles.container}>
 			<MaterialIcons name="sort" size={32} color="black" />
@@ -44,4 +44,4 @@ const styles = StyleSheet.create({
 		fontSize: 24,
 	},
 });
-export default Home;
+export default HomeScreen;

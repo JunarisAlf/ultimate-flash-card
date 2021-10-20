@@ -9,15 +9,21 @@ import {
 import { Feather } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import color from "../../constant/color";
+import { useNavigation } from "@react-navigation/native";
 
 const asset = {
 	image1: require("../../../assets/english1.jpeg"),
 	image2: require("../../../assets/english2.jpeg"),
 };
 const Groub = () => {
+	const navigation = useNavigation();
 	return (
 		<View style={styles.container}>
-			<TouchableOpacity style={styles.groubBox} delayPressIn={50}>
+			<TouchableOpacity
+				style={styles.groubBox}
+				delayPressIn={50}
+				onPress={() => navigation.navigate("GroubScreen")}
+			>
 				<ImageBackground style={styles.groubImage} source={asset.image1} />
 
 				<View style={styles.groubNameContainer}>
@@ -40,7 +46,11 @@ const Groub = () => {
 				</View>
 			</TouchableOpacity>
 
-			<TouchableOpacity style={styles.groubBox} delayPressIn={50}>
+			<TouchableOpacity
+				style={styles.groubBox}
+				delayPressIn={50}
+				onPress={() => navigation.navigate("GroubScreen")}
+			>
 				<ImageBackground style={styles.groubImage} source={asset.image2} />
 
 				<View style={styles.groubNameContainer}>
@@ -63,7 +73,11 @@ const Groub = () => {
 				</View>
 			</TouchableOpacity>
 
-			<TouchableOpacity style={styles.groubBox} delayPressIn={50}>
+			<TouchableOpacity
+				style={styles.groubBox}
+				delayPressIn={50}
+				onPress={() => navigation.navigate("GroubScreen")}
+			>
 				<ImageBackground style={styles.groubImage} source={asset.image1} />
 
 				<View style={styles.groubNameContainer}>
