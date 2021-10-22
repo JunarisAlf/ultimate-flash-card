@@ -7,6 +7,7 @@ import color from "../../constant/color";
 import QuickMenu from "./QuickMenu";
 import Groub from "./Groub";
 import NewGroub from "./NewGroub";
+import fonts from "../../constant/fonts";
 
 const HomeScreen = ({ navigation }) => {
 	return (
@@ -15,7 +16,7 @@ const HomeScreen = ({ navigation }) => {
 
 			<Text style={styles.textHeader}>
 				Hello, &nbsp;
-				<Text style={{ fontFamily: "Lato_400Regular" }}>
+				<Text style={{ fontFamily: fonts.regular }}>
 					Let's Learn Something New Today!
 				</Text>
 			</Text>
@@ -38,12 +39,12 @@ const styles = StyleSheet.create({
 	textHeader: {
 		color: color.gray1,
 		fontSize: 24,
-		fontFamily: "Lato_300Light",
+		fontFamily: fonts.light,
 		marginTop: 14,
 		paddingRight: "20%",
 	},
 	groubHeadTitle: {
-		fontFamily: "Lato_400Regular",
+		fontFamily: fonts.regular,
 		color: color.gray1,
 		fontSize: 24,
 	},

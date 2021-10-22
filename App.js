@@ -4,20 +4,23 @@ import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import {
 	useFonts,
-	Lato_100Thin,
-	Lato_100Thin_Italic,
-	Lato_300Light,
-	Lato_300Light_Italic,
-	Lato_400Regular,
-	Lato_400Regular_Italic,
-	Lato_700Bold,
-	Lato_700Bold_Italic,
-	Lato_900Black,
-	Lato_900Black_Italic,
-} from "@expo-google-fonts/lato";
+	Roboto_100Thin,
+	Roboto_100Thin_Italic,
+	Roboto_300Light,
+	Roboto_300Light_Italic,
+	Roboto_400Regular,
+	Roboto_400Regular_Italic,
+	Roboto_500Medium,
+	Roboto_500Medium_Italic,
+	Roboto_700Bold,
+	Roboto_700Bold_Italic,
+	Roboto_900Black,
+	Roboto_900Black_Italic,
+} from "@expo-google-fonts/roboto";
 
 import HomeScreen from "./src/pages/Home/HomeScreen";
 import GroubScreen from "./src/pages/Groub/GroubScreen";
+import fonts from "./src/constant/fonts";
 
 const Stack = createNativeStackNavigator();
 const Theme = {
@@ -29,9 +32,10 @@ const Theme = {
 };
 const App = () => {
 	let [fontsLoaded] = useFonts({
-		Lato_300Light,
-		Lato_400Regular,
-		Lato_700Bold,
+		Roboto_300Light,
+		Roboto_400Regular,
+		Roboto_500Medium,
+		Roboto_700Bold,
 	});
 	if (!fontsLoaded) {
 		return <Text>Loading...</Text>;
@@ -50,7 +54,7 @@ const App = () => {
 						component={GroubScreen}
 						options={{
 							headerTitleStyle: {
-								fontFamily: "Lato_400Regular",
+								fontFamily: fonts.regular,
 								fontSize: 14,
 							},
 						}}

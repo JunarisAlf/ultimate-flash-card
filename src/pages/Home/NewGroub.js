@@ -2,6 +2,7 @@ import React from "react";
 import { TouchableOpacity, Text, StyleSheet } from "react-native";
 import color from "../../constant/color";
 import { Entypo } from "@expo/vector-icons";
+import fonts from "../../constant/fonts";
 
 const NewGroub = () => {
 	return (
@@ -25,7 +26,7 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 	},
 	newGroubText: {
-		fontFamily: "Lato_700Bold",
+		fontFamily: fonts.bold,
 		fontSize: 14,
 		color: color.gray3,
 	},

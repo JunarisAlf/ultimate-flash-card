@@ -1,6 +1,8 @@
 import React from "react";
 import { View, Text, StyleSheet, Pressable } from "react-native";
 import color from "../../constant/color";
+import fonts from "../../constant/fonts";
+
 import { MaterialIcons } from "@expo/vector-icons";
 
 const QuickMenu = () => {
@@ -44,7 +46,7 @@ const styles = StyleSheet.create({
 	quickMenuText: {
 		fontSize: 13,
 		color: color.gray1,
-		fontFamily: "Lato_400Regular",
+		fontFamily: fonts.regular,
 		textAlign: "center",
 	},
 });

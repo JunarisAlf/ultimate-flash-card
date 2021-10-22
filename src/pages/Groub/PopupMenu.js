@@ -7,6 +7,7 @@ import {
 	StyleSheet,
 } from "react-native";
 import color from "../../constant/color";
+import fonts from "../../constant/fonts";
 
 const PopupMenu = ({ visible, setPopupMenuVisible }) => {
 	return (
@@ -44,7 +45,7 @@ const styles = StyleSheet.create({
 		top: 10,
 	},
 	modalText: {
-		fontFamily: "Lato_400Regular",
+		fontFamily: fonts.regular,
 		color: color.gray2,
 		fontSize: 14,
 		paddingVertical: 3,

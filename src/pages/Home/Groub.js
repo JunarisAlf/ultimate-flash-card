@@ -10,6 +10,7 @@ import { Feather } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import color from "../../constant/color";
 import { useNavigation } from "@react-navigation/native";
+import fonts from "../../constant/fonts";
 
 const asset = {
 	image1: require("../../../assets/english1.jpeg"),
@@ -132,7 +133,7 @@ const styles = StyleSheet.create({
 	groubName: {
 		flex: 10,
 		fontSize: 16,
-		fontFamily: "Lato_400Regular",
+		fontFamily: fonts.regular,
 		color: color.gray2,
 	},
 	groubDetailContainer: {
@@ -151,7 +152,7 @@ const styles = StyleSheet.create({
 		fontSize: 12,
 		marginLeft: 3,
 		color: color.gray3,
-		fontFamily: "Lato_400Regular",
+		fontFamily: fonts.regular,
 	},
 });
 

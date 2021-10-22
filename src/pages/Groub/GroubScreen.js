@@ -6,6 +6,7 @@ import PopupMenu from "./PopupMenu";
 
 import { Ionicons } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
+import fonts from "../../constant/fonts";
 
 const decks = [
 	{
@@ -44,7 +45,6 @@ const GroubScreen = ({ navigation }) => {
 				headerRight: () => (
 					<Entypo
 						onPress={() => setPopupMenuVisible(true)}
-						style={styles.threedotIcon}
 						name="dots-three-vertical"
 						size={16}
 						color="black"
@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
 	},
 	headerText: {
 		marginTop: 10,
-		fontFamily: "Lato_700Bold",
+		fontFamily: fonts.bold,
 		fontSize: 18,
 		color: color.gray2,
 	},

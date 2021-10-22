@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import color from "../../constant/color";
+import fonts from "../../constant/fonts";
 
 const Deck = ({ deck }) => {
 	return (
@@ -50,7 +51,7 @@ const styles = StyleSheet.create({
 	},
 	deckName: {
 		color: color.white,
-		fontFamily: "Lato_700Bold",
+		fontFamily: fonts.bold,
 		fontSize: 16,
 	},
 	iconDecoration: {
@@ -80,7 +81,7 @@ const styles = StyleSheet.create({
 	deckProgressNumber: {
 		flex: 20,
 		textAlign: "center",
-		fontFamily: "Lato_700Bold",
+		fontFamily: fonts.bold,
 		fontSize: 12,
 		color: color.gray3,
 	},
