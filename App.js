@@ -55,7 +55,7 @@ const App = () => {
 						options={{
 							headerTitleStyle: {
 								fontFamily: fonts.regular,
-								fontSize: 14,
+								fontSize: 16,
 							},
 						}}
 					/>

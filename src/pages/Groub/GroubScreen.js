@@ -3,6 +3,7 @@ import { View, Text, FlatList, StyleSheet } from "react-native";
 import color from "../../constant/color";
 import Deck from "./Deck";
 import PopupMenu from "./PopupMenu";
+import ModalAddDeck from "./ModalAddDeck";
 
 import { Ionicons } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
@@ -33,6 +34,8 @@ const decks = [
 
 const GroubScreen = ({ navigation }) => {
 	const [popupMenuVisible, setPopupMenuVisible] = useState(false);
+	const [modalAddDeckVisible, setModalAddDeckVisible] = useState(false);
+
 	useEffect(() => {
 		navigation.setOptions({
 			title: "English Beginner Vocabulary",
@@ -74,6 +77,11 @@ const GroubScreen = ({ navigation }) => {
 				name="add-circle"
 				size={58}
 				color={color.orange}
+				onPress={() => setModalAddDeckVisible(true)}
+			/>
+			<ModalAddDeck
+				setModalAddDeckVisible={setModalAddDeckVisible}
+				visible={modalAddDeckVisible}
 			/>
 		</View>
 	);
@@ -86,7 +94,7 @@ const styles = StyleSheet.create({
 	},
 	headerText: {
 		marginTop: 10,
-		fontFamily: fonts.bold,
+		fontFamily: fonts.medium,
 		fontSize: 18,
 		color: color.gray2,
 	},

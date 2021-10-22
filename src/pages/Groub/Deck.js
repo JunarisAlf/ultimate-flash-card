@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
 	},
 	deckName: {
 		color: color.white,
-		fontFamily: fonts.bold,
+		fontFamily: fonts.medium,
 		fontSize: 16,
 	},
 	iconDecoration: {
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
 	deckProgressNumber: {
 		flex: 20,
 		textAlign: "center",
-		fontFamily: fonts.bold,
+		fontFamily: fonts.regular,
 		fontSize: 12,
 		color: color.gray3,
 	},
