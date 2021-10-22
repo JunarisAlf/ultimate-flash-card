@@ -4,6 +4,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 import color from "../../constant/color";
 import QuickMenu from "./QuickMenu";
 import Groub from "./Groub";
+import NewGroub from "./NewGroub";
 
 const HomeScreen = ({ navigation }) => {
 	return (
@@ -21,6 +22,7 @@ const HomeScreen = ({ navigation }) => {
 
 			<Text style={styles.groubHeadTitle}>Your Deck Group</Text>
 			<Groub />
+			<NewGroub />
 		</ScrollView>
 	);
 };

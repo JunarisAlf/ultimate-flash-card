@@ -106,7 +106,6 @@ const Groub = () => {
 const styles = StyleSheet.create({
 	container: {
 		marginTop: 5,
-		paddingBottom: 50,
 	},
 	groubBox: {
 		width: "100%",

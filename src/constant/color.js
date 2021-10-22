@@ -7,4 +7,5 @@ export default {
 	gray3: "#828282",
 	gray4: "#BDBDBD",
 	gray5: "#E0E0E0",
+	orange: "#F2994A",
 };

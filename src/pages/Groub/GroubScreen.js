@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
-import { View, Text, FlatList, ScrollView, StyleSheet } from "react-native";
+import { View, Text, FlatList, StyleSheet } from "react-native";
 import color from "../../constant/color";
 import Deck from "./Deck";
+
+import { Ionicons } from "@expo/vector-icons";
 
 const decks = [
 	{
@@ -44,12 +46,19 @@ const GroubScreen = ({ navigation }) => {
 				columnWrapperStyle={styles.listWrapper}
 				renderItem={(deck) => <Deck deck={deck.item} />}
 			/>
+			<Ionicons
+				style={styles.addButton}
+				name="add-circle"
+				size={58}
+				color={color.orange}
+			/>
 		</View>
 	);
 };
 
 const styles = StyleSheet.create({
 	container: {
+		flex: 1,
 		paddingHorizontal: 18,
 	},
 	headerText: {
@@ -60,6 +69,11 @@ const styles = StyleSheet.create({
 	},
 	listWrapper: {
 		justifyContent: "space-between",
+	},
+	addButton: {
+		position: "absolute",
+		bottom: 10,
+		right: 10,
 	},
 });
 export default GroubScreen;

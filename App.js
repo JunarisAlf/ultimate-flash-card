@@ -18,6 +18,7 @@ import {
 
 import HomeScreen from "./src/pages/Home/HomeScreen";
 import GroubScreen from "./src/pages/Groub/GroubScreen";
+import { Entypo } from "@expo/vector-icons";
 
 const Stack = createNativeStackNavigator();
 const Theme = {
@@ -49,9 +50,14 @@ const App = () => {
 						name="GroubScreen"
 						component={GroubScreen}
 						options={{
-							headerStyle: {
-								justifyContent: "center",
-							},
+							headerRight: (props) => (
+								<Entypo
+									{...props}
+									name="dots-three-vertical"
+									size={16}
+									color="black"
+								/>
+							),
 							headerTitleStyle: {
 								fontFamily: "Lato_400Regular",
 								fontSize: 14,
