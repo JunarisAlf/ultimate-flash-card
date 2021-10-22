@@ -1,9 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import { View, Text, FlatList, StyleSheet } from "react-native";
 import color from "../../constant/color";
 import Deck from "./Deck";
+import PopupMenu from "./PopupMenu";
 
 import { Ionicons } from "@expo/vector-icons";
+import { Entypo } from "@expo/vector-icons";
 
 const decks = [
 	{
@@ -29,14 +31,35 @@ const decks = [
 ];
 
 const GroubScreen = ({ navigation }) => {
+	const [popupMenuVisible, setPopupMenuVisible] = useState(false);
 	useEffect(() => {
 		navigation.setOptions({
 			title: "English Beginner Vocabulary",
 		});
 	}, []);
 
+	useLayoutEffect(
+		() =>
+			navigation.setOptions({
+				headerRight: () => (
+					<Entypo
+						onPress={() => setPopupMenuVisible(true)}
+						style={styles.threedotIcon}
+						name="dots-three-vertical"
+						size={16}
+						color="black"
+					/>
+				),
+			}),
+		[navigation]
+	);
+
 	return (
 		<View style={styles.container}>
+			<PopupMenu
+				setPopupMenuVisible={setPopupMenuVisible}
+				visible={popupMenuVisible}
+			/>
 			<Text style={styles.headerText}>Your Decks</Text>
 			<FlatList
 				key={"_"}

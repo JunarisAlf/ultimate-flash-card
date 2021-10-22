@@ -1,6 +1,8 @@
 import React from "react";
 import { StyleSheet, Text, ScrollView } from "react-native";
+
 import { MaterialIcons } from "@expo/vector-icons";
+
 import color from "../../constant/color";
 import QuickMenu from "./QuickMenu";
 import Groub from "./Groub";
