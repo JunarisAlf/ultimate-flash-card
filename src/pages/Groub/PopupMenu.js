@@ -1,54 +1,30 @@
-import React from "react";
-import {
-	View,
-	Text,
-	Modal,
-	TouchableWithoutFeedback,
-	StyleSheet,
-} from "react-native";
-import color from "../../constant/color";
-import fonts from "../../constant/fonts";
+import React from 'react';
+import { Text, StyleSheet } from 'react-native';
+import PopUpMenuThemplate from '../../component/ModalThemplate/PopUpMenu';
 
-const PopupMenu = ({ visible, setPopupMenuVisible }) => {
-	return (
-		<Modal visible={visible} transparent={true}>
-			<TouchableWithoutFeedback onPress={() => setPopupMenuVisible(false)}>
-				<View style={styles.modalOutside} />
-			</TouchableWithoutFeedback>
-			<View style={styles.modalContainer}>
-				<Text style={styles.modalText}>Edit</Text>
-				<Text style={styles.modalText}>Delete</Text>
-			</View>
-		</Modal>
-	);
+import color from '../../constant/color';
+import fonts from '../../constant/fonts';
+
+const PopupMenu = (props) => {
+    return (
+        <PopUpMenuThemplate {...props}>
+            <Text style={styles.modalText}>Edit</Text>
+            <Text
+                onPress={() => props.setDeleteConfirmationVisible(true)}
+                style={styles.modalText}
+            >
+                Delete
+            </Text>
+        </PopUpMenuThemplate>
+    );
 };
 
 const styles = StyleSheet.create({
-	modalOutside: {
-		position: "absolute",
-		top: 0,
-		bottom: 0,
-		left: 0,
-		right: 0,
-	},
-	modalContainer: {
-		width: 120,
-		backgroundColor: color.white,
-		paddingLeft: 20,
-		paddingVertical: 10,
-		borderRadius: 4,
-		borderWidth: 0.2,
-		borderColor: color.gray4,
-		elevation: 1,
-		position: "absolute",
-		right: 15,
-		top: 15,
-	},
-	modalText: {
-		fontFamily: fonts.regular,
-		color: color.gray2,
-		fontSize: 14,
-		paddingVertical: 3,
-	},
+    modalText: {
+        fontFamily: fonts.regular,
+        color: color.gray2,
+        fontSize: 16,
+        paddingVertical: 3,
+    },
 });
 export default PopupMenu;
