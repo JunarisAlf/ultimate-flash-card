@@ -5,6 +5,7 @@ import Deck from './Deck';
 
 import { Ionicons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
+import NavHeader from '../../component/MicroComponent/ThreeDotNavigationHeader';
 import fonts from '../../constant/fonts';
 import GroubModal from './GroubModal';
 
@@ -13,21 +14,25 @@ const decks = [
         key: '1',
         name: 'Daily Word Vocabullary',
         progress: '80%',
+        link: 'DeckScreen',
     },
     {
         key: '2',
         name: 'Verb Vocabulary',
         progress: '65%',
+        link: 'DeckScreen',
     },
     {
         key: '3',
         name: 'Noun Vocabulary',
         progress: '50%',
+        link: 'DeckScreen',
     },
     {
         key: '4',
         name: 'Noun Vocabular 2',
         progress: '100%',
+        link: 'DeckScreen',
     },
 ];
 
@@ -47,12 +52,7 @@ const GroubScreen = ({ navigation }) => {
         () =>
             navigation.setOptions({
                 headerRight: () => (
-                    <Entypo
-                        onPress={() => setPopupMenuVisible(true)}
-                        name="dots-three-vertical"
-                        size={16}
-                        color="black"
-                    />
+                    <NavHeader pressAction={setPopupMenuVisible} />
                 ),
             }),
         [navigation]
@@ -76,7 +76,7 @@ const GroubScreen = ({ navigation }) => {
                 data={decks}
                 numColumns={2}
                 columnWrapperStyle={styles.listWrapper}
-                renderItem={(deck) => <Deck deck={deck.item} />}
+                renderItem={({ item }) => <Deck deck={item} link={item.link} />}
             />
             <Ionicons
                 style={styles.addButton}
