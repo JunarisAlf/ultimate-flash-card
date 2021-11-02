@@ -10,4 +10,7 @@ export default {
     gray6: '#F2F2F2',
     orange: '#F2994A',
     red: '#EB5757',
+    yellow: '#F2C94C',
+    green: '#27AE60',
+    blue: '#259FF4',
 };

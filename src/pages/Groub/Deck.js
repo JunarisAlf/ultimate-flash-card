@@ -6,7 +6,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import color from '../../constant/color';
 import fonts from '../../constant/fonts';
 
-const Deck = ({ deck, link }) => {
+const Deck = ({ deck }) => {
     const navigation = useNavigation();
     return (
         <TouchableOpacity
