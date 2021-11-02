@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableHighlight } from 'react-native';
 import { AntDesign, MaterialIcons } from '@expo/vector-icons';
+import LearnProgressChart from './LearnProgressChart';
 
 import color from '../../constant/color';
 import fonts from '../../constant/fonts';
@@ -43,13 +44,11 @@ const LearnAndReview = () => {
                     </TouchableHighlight>
                 </View>
                 <View>
-                    <MaterialIcons
-                        name="repeat"
-                        size={64}
-                        color={color.white}
-                    />
+                    <LearnProgressChart />
                 </View>
             </View>
+
+            {/* End Learn - Start Review */}
 
             <View
                 style={{
