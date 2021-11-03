@@ -21,13 +21,13 @@ export default [
         status: 'hard',
         image: '001.jpeg',
         front: {
-            primaryText: 'Buku',
+            primaryText: 'Pena',
             secondaryText: 'Optional Description',
 
             sound: 'Indonesia',
         },
         back: {
-            primaryText: 'Book',
+            primaryText: 'Pen',
             secondaryText: 'Optional Description',
 
             sound: 'English',
@@ -38,15 +38,13 @@ export default [
         status: 'none',
         image: '001.jpeg',
         front: {
-            primaryText: 'Buku',
+            primaryText: 'Meja',
             secondaryText: 'Optional Description',
-            image: '/assets/image/001.jpeg',
             sound: 'Indonesia',
         },
         back: {
-            primaryText: 'Book',
+            primaryText: 'Table',
             secondaryText: 'Optional Description',
-            image: '/assets/image/001.jpeg',
             sound: 'English',
         },
     },
@@ -55,15 +53,13 @@ export default [
         status: 'fail',
         image: '001.jpeg',
         front: {
-            primaryText: 'Buku',
+            primaryText: 'Kursi',
             secondaryText: 'Optional Description',
-            image: '/assets/image/001.jpeg',
             sound: 'Indonesia',
         },
         back: {
-            primaryText: 'Book',
+            primaryText: 'Chair',
             secondaryText: 'Optional Description',
-            image: '/assets/image/001.jpeg',
             sound: 'English',
         },
     },

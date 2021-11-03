@@ -1,11 +1,34 @@
-import React from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import React, { useState, useRef } from 'react';
+import {
+    Animated,
+    View,
+    Text,
+    StyleSheet,
+    Image,
+    TouchableOpacity,
+} from 'react-native';
 import color from '../../constant/color';
 import { Entypo, MaterialIcons } from '@expo/vector-icons';
 import fonts from '../../constant/fonts';
 
 const Card = ({ card }) => {
-    // const cardImage = require('../../../assets/card-image/' + card.image);
+    const [fliped, setFliped] = useState(false);
+    const data = fliped ? card.back : card.front;
+
+    const value = useRef(new Animated.Value(0)).current;
+
+    const flipAnimation = () => {
+        Animated.timing(value, {
+            toValue: 180,
+            duration: 300,
+            useNativeDriver: 'true',
+        }).start(() => value.setValue(0));
+    };
+    const rotate = value.interpolate({
+        inputRange: [0, 180, 180],
+        outputRange: ['0deg', '180deg', '0deg'],
+        // extrapolateRight: 'clamp',
+    });
     return (
         <View style={styles.container}>
             {card.status === 'none' && (
@@ -38,34 +61,52 @@ const Card = ({ card }) => {
                 />
             )}
 
-            <View style={styles.cardContainer}>
-                <Image
-                    style={styles.cardImage}
-                    source={{ url: '../../../assets/card-image/001.jpeg' }}
-                />
-                <View style={styles.cardTextContainer}>
-                    <Text style={styles.cardPrimaryText}>
-                        {card.front.primaryText}
-                    </Text>
-                    <Text style={styles.cardSecondaryText}>
-                        {card.front.secondaryText}
-                    </Text>
-                </View>
-                <View style={styles.cardRightSide}>
-                    <Entypo
-                        name="dots-three-vertical"
-                        size={14}
-                        color={color.white}
-                    />
-                    <TouchableOpacity style={styles.circleIconBg}>
-                        <MaterialIcons
-                            name="volume-up"
-                            size={22}
-                            color={color.blue}
+            <TouchableOpacity
+                activeOpacity={0.5}
+                style={{ flex: 1 }}
+                onPress={() => {
+                    flipAnimation();
+                    setFliped(!fliped);
+                }}
+            >
+                <Animated.View
+                    style={[
+                        styles.cardContainer,
+                        {
+                            backgroundColor: fliped ? color.red : color.blue,
+                            transform: [
+                                {
+                                    rotateX: rotate,
+                                },
+                            ],
+                        },
+                    ]}
+                >
+                    <Image style={styles.cardImage} />
+                    <View style={styles.cardTextContainer}>
+                        <Text style={styles.cardPrimaryText}>
+                            {data.primaryText}
+                        </Text>
+                        <Text style={styles.cardSecondaryText}>
+                            {data.secondaryText}
+                        </Text>
+                    </View>
+                    <View style={styles.cardRightSide}>
+                        <Entypo
+                            name="dots-three-vertical"
+                            size={14}
+                            color={color.white}
                         />
-                    </TouchableOpacity>
-                </View>
-            </View>
+                        <TouchableOpacity style={styles.circleIconBg}>
+                            <MaterialIcons
+                                name="volume-up"
+                                size={22}
+                                color={fliped ? color.red : color.blue}
+                            />
+                        </TouchableOpacity>
+                    </View>
+                </Animated.View>
+            </TouchableOpacity>
         </View>
     );
 };
