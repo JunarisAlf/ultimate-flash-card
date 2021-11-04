@@ -7,13 +7,16 @@ import {
     FlatList,
     StyleSheet,
     TouchableOpacity,
+    VirtualizedList,
 } from 'react-native';
+import { v4 as uuid } from 'uuid';
 
 import { Ionicons, MaterialIcons, AntDesign } from '@expo/vector-icons';
 import NavHeader from '../../component/MicroComponent/ThreeDotNavigationHeader';
 import DeckModal from './DeckModal';
 import LearnAndReview from './LearnAndReview';
 import Card from './Card';
+import CardStatus from './CardStatus';
 
 import fonts from '../../constant/fonts';
 import color from '../../constant/color';
@@ -24,7 +27,8 @@ const GroubScreen = ({ navigation }) => {
     const [modalAddDeckVisible, setModalAddDeckVisible] = useState(false);
     const [deleteConfirmationVisible, setDeleteConfirmationVisible] =
         useState(false);
-
+    // const [flipedAll, setFlipedAll] = useState(false);
+    const renderCard = ({ item }) => <Card card={item} />;
     useEffect(() => {
         navigation.setOptions({
             title: 'Daily Word Vocabullary',
@@ -51,16 +55,20 @@ const GroubScreen = ({ navigation }) => {
                 deleteConfirmationVisible={deleteConfirmationVisible}
                 setDeleteConfirmationVisible={setDeleteConfirmationVisible}
             />
+
             <LearnAndReview />
 
             <View style={styles.heading}>
                 <Text style={styles.yourCardsText}>
                     Your Cards&nbsp;
                     <Text style={{ fontSize: 14, fontFamily: fonts.regular }}>
-                        (100)
+                        ({cards.length})
                     </Text>
                 </Text>
-                <TouchableOpacity style={styles.flipContainer}>
+                <TouchableOpacity
+                    style={styles.flipContainer}
+                    // onPress={() => setFlipedAll(!flipedAll)}
+                >
                     <Text style={styles.flipText}>Flip</Text>
                     <MaterialIcons name="flip" size={16} color="black" />
                 </TouchableOpacity>
@@ -80,11 +88,12 @@ const GroubScreen = ({ navigation }) => {
                 </TouchableOpacity>
             </View>
 
+            <CardStatus />
+
             <FlatList
-                key={'_'}
-                keyExtractor={(card) => '_' + card.key}
+                keyExtractor={(card) => '_' + card.key + uuid()}
                 data={cards}
-                renderItem={({ item }) => <Card card={item} />}
+                renderItem={renderCard}
                 nestedScrollEnabled={true}
             />
         </ScrollView>

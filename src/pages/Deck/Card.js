@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import {
     Animated,
     View,
@@ -13,22 +13,25 @@ import fonts from '../../constant/fonts';
 
 const Card = ({ card }) => {
     const [fliped, setFliped] = useState(false);
+    // useEffect(() => {
+    //     flipAnimation();
+    // }, [fliped]);
+
     const data = fliped ? card.back : card.front;
-
-    const value = useRef(new Animated.Value(0)).current;
-
-    const flipAnimation = () => {
-        Animated.timing(value, {
-            toValue: 180,
-            duration: 300,
-            useNativeDriver: 'true',
-        }).start(() => value.setValue(0));
-    };
-    const rotate = value.interpolate({
-        inputRange: [0, 180, 180],
-        outputRange: ['0deg', '180deg', '0deg'],
-        // extrapolateRight: 'clamp',
-    });
+    // const value = useRef(new Animated.Value(0)).current;
+    // const flipAnimation = () => {
+    //     Animated.timing(value, {
+    //         toValue: 180,
+    //         duration: 300,
+    //         useNativeDriver: 'false',
+    //     }).start(() => value.setValue(0));
+    // };
+    // const rotate = value.interpolate({
+    //     inputRange: [0, 180, 180],
+    //     outputRange: ['0deg', '180deg', '0deg'],
+    //     // extrapolateRight: 'clamp',
+    // });
+    const rotate = '0deg';
     return (
         <View style={styles.container}>
             {card.status === 'none' && (
@@ -62,10 +65,9 @@ const Card = ({ card }) => {
             )}
 
             <TouchableOpacity
-                activeOpacity={0.5}
+                activeOpacity={0.2}
                 style={{ flex: 1 }}
                 onPress={() => {
-                    flipAnimation();
                     setFliped(!fliped);
                 }}
             >
@@ -73,7 +75,9 @@ const Card = ({ card }) => {
                     style={[
                         styles.cardContainer,
                         {
-                            backgroundColor: fliped ? color.red : color.blue,
+                            backgroundColor: fliped
+                                ? color.darkBlue
+                                : color.blue,
                             transform: [
                                 {
                                     rotateX: rotate,
@@ -82,8 +86,8 @@ const Card = ({ card }) => {
                         },
                     ]}
                 >
-                    <Image style={styles.cardImage} />
-                    <View style={styles.cardTextContainer}>
+                    <Image style={styles.cardImage} source={card.image} />
+                    <View style={[styles.cardTextContainer]}>
                         <Text style={styles.cardPrimaryText}>
                             {data.primaryText}
                         </Text>
@@ -91,7 +95,7 @@ const Card = ({ card }) => {
                             {data.secondaryText}
                         </Text>
                     </View>
-                    <View style={styles.cardRightSide}>
+                    <View style={[styles.cardRightSide]}>
                         <Entypo
                             name="dots-three-vertical"
                             size={14}
@@ -101,7 +105,7 @@ const Card = ({ card }) => {
                             <MaterialIcons
                                 name="volume-up"
                                 size={22}
-                                color={fliped ? color.red : color.blue}
+                                color={fliped ? color.darkBlue : color.blue}
                             />
                         </TouchableOpacity>
                     </View>
