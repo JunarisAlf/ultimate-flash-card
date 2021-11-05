@@ -4,7 +4,6 @@ import color from '../../constant/color';
 import decks from '../../Dummy/deckList';
 import Deck from './Deck';
 
-import { Ionicons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import NavHeader from '../../component/MicroComponent/ThreeDotNavigationHeader';
 import fonts from '../../constant/fonts';
@@ -52,13 +51,14 @@ const GroubScreen = ({ navigation }) => {
                 columnWrapperStyle={styles.listWrapper}
                 renderItem={({ item }) => <Deck deck={item} link={item.link} />}
             />
-            <Ionicons
-                style={styles.addButton}
-                name="add-circle"
-                size={58}
-                color={color.orange}
-                onPress={() => setModalAddDeckVisible(true)}
-            />
+            <View style={styles.addButton}>
+                <Entypo
+                    name="plus"
+                    size={38}
+                    color={color.white}
+                    onPress={() => setModalAddDeckVisible(true)}
+                />
+            </View>
         </View>
     );
 };
@@ -79,8 +79,14 @@ const styles = StyleSheet.create({
     },
     addButton: {
         position: 'absolute',
+        justifyContent: 'center',
+        alignItems: 'center',
         bottom: 10,
         right: 10,
+        backgroundColor: color.orange,
+        height: 48,
+        width: 48,
+        borderRadius: 24,
     },
 });
 export default GroubScreen;

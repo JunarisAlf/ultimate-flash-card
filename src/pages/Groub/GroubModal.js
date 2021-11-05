@@ -15,20 +15,26 @@ const GroubModal = ({
 }) => {
     return (
         <View>
-            <PopupMenu
-                setPopupMenuVisible={setPopupMenuVisible}
-                visible={popupMenuVisible}
-                setDeleteConfirmationVisible={setDeleteConfirmationVisible}
-            />
-            <ModalDeleteConfirmation
-                visible={deleteConfirmationVisible}
-                setDeleteConfirmationVisible={setDeleteConfirmationVisible}
-            />
+            {popupMenuVisible && (
+                <PopupMenu
+                    setPopupMenuVisible={setPopupMenuVisible}
+                    visible={popupMenuVisible}
+                    setDeleteConfirmationVisible={setDeleteConfirmationVisible}
+                />
+            )}
+            {deleteConfirmationVisible && (
+                <ModalDeleteConfirmation
+                    visible={deleteConfirmationVisible}
+                    setDeleteConfirmationVisible={setDeleteConfirmationVisible}
+                />
+            )}
 
-            <ModalAddDeck
-                setModalAddDeckVisible={setModalAddDeckVisible}
-                visible={modalAddDeckVisible}
-            />
+            {modalAddDeckVisible && (
+                <ModalAddDeck
+                    setModalAddDeckVisible={setModalAddDeckVisible}
+                    visible={modalAddDeckVisible}
+                />
+            )}
         </View>
     );
 };

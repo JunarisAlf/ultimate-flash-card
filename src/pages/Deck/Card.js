@@ -11,10 +11,10 @@ import color from '../../constant/color';
 import { Entypo, MaterialIcons } from '@expo/vector-icons';
 import fonts from '../../constant/fonts';
 
-const Card = ({ card }) => {
+const Card = ({ card, flipedAll }) => {
     const [fliped, setFliped] = useState(false);
     // useEffect(() => {
-    //     flipAnimation();
+    //     console.log('EFFECT');
     // }, [fliped]);
 
     const data = fliped ? card.back : card.front;

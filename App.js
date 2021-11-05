@@ -21,6 +21,8 @@ import {
 import HomeScreen from './src/pages/Home';
 import GroubScreen from './src/pages/Groub';
 import DeckScreen from './src/pages/Deck';
+import AddCardScreen from './src/pages/AddCard';
+
 import fonts from './src/constant/fonts';
 
 const Stack = createNativeStackNavigator();
@@ -60,6 +62,10 @@ const App = () => {
                     />
                     <Stack.Screen name="GroubScreen" component={GroubScreen} />
                     <Stack.Screen name="DeckScreen" component={DeckScreen} />
+                    <Stack.Screen
+                        name="AddCardScreen"
+                        component={AddCardScreen}
+                    />
                 </Stack.Navigator>
             </NavigationContainer>
         );

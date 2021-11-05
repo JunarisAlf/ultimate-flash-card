@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     ScrollView,
     View,
@@ -7,11 +7,10 @@ import {
     FlatList,
     StyleSheet,
     TouchableOpacity,
-    VirtualizedList,
 } from 'react-native';
 import { v4 as uuid } from 'uuid';
 
-import { Ionicons, MaterialIcons, AntDesign } from '@expo/vector-icons';
+import { Entypo, MaterialIcons, AntDesign } from '@expo/vector-icons';
 import NavHeader from '../../component/MicroComponent/ThreeDotNavigationHeader';
 import DeckModal from './DeckModal';
 import LearnAndReview from './LearnAndReview';
@@ -24,34 +23,22 @@ import cards from '../../Dummy/cardList';
 
 const GroubScreen = ({ navigation }) => {
     const [popupMenuVisible, setPopupMenuVisible] = useState(false);
-    const [modalAddDeckVisible, setModalAddDeckVisible] = useState(false);
     const [deleteConfirmationVisible, setDeleteConfirmationVisible] =
         useState(false);
-    // const [flipedAll, setFlipedAll] = useState(false);
-    const renderCard = ({ item }) => <Card card={item} />;
+    const [flipedAll, setFlipedAll] = useState(false);
+
     useEffect(() => {
         navigation.setOptions({
             title: 'Daily Word Vocabullary',
+            headerRight: () => <NavHeader pressAction={setPopupMenuVisible} />,
         });
-    }, []);
-
-    useLayoutEffect(
-        () =>
-            navigation.setOptions({
-                headerRight: () => (
-                    <NavHeader pressAction={setPopupMenuVisible} />
-                ),
-            }),
-        [navigation]
-    );
+    }, [navigation]);
 
     return (
-        <ScrollView style={styles.container}>
+        <View style={styles.container}>
             <DeckModal
                 popupMenuVisible={popupMenuVisible}
                 setPopupMenuVisible={setPopupMenuVisible}
-                modalAddDeckVisible={modalAddDeckVisible}
-                setModalAddDeckVisible={setModalAddDeckVisible}
                 deleteConfirmationVisible={deleteConfirmationVisible}
                 setDeleteConfirmationVisible={setDeleteConfirmationVisible}
             />
@@ -67,7 +54,7 @@ const GroubScreen = ({ navigation }) => {
                 </Text>
                 <TouchableOpacity
                     style={styles.flipContainer}
-                    // onPress={() => setFlipedAll(!flipedAll)}
+                    onPress={() => setFlipedAll(!flipedAll)}
                 >
                     <Text style={styles.flipText}>Flip</Text>
                     <MaterialIcons name="flip" size={16} color="black" />
@@ -91,12 +78,26 @@ const GroubScreen = ({ navigation }) => {
             <CardStatus />
 
             <FlatList
+                style={{
+                    width: '100%',
+                    height: 600,
+                }}
                 keyExtractor={(card) => '_' + card.key + uuid()}
                 data={cards}
-                renderItem={renderCard}
+                renderItem={({ item }) => (
+                    <Card card={item} flipedAll={flipedAll} />
+                )}
                 nestedScrollEnabled={true}
             />
-        </ScrollView>
+            <View style={styles.addButton}>
+                <Entypo
+                    name="plus"
+                    size={38}
+                    color={color.white}
+                    onPress={() => navigation.navigate('AddCardScreen')}
+                />
+            </View>
+        </View>
     );
 };
 
@@ -154,6 +155,17 @@ const styles = StyleSheet.create({
         flex: 15,
         justifyContent: 'center',
         alignItems: 'center',
+    },
+    addButton: {
+        position: 'absolute',
+        justifyContent: 'center',
+        alignItems: 'center',
+        bottom: 10,
+        right: 10,
+        backgroundColor: color.orange,
+        height: 48,
+        width: 48,
+        borderRadius: 24,
     },
 });
 export default GroubScreen;
