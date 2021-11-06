@@ -8,12 +8,12 @@ import {
 } from 'react-native';
 import color from '../../constant/color';
 
-const Confirmation = ({ children, visible, setDeleteConfirmationVisible }) => {
+const Confirmation = ({ children, visible, setVisible, duration = 200 }) => {
     const opacityZero = useRef(new Animated.Value(0)).current;
     const fadeIn = () => {
         Animated.timing(opacityZero, {
             toValue: 0.7,
-            duration: 200,
+            duration: duration,
             delay: 0,
             useNativeDriver: true,
         }).start();
@@ -28,7 +28,7 @@ const Confirmation = ({ children, visible, setDeleteConfirmationVisible }) => {
         >
             <TouchableWithoutFeedback
                 onPress={() => {
-                    setDeleteConfirmationVisible(false);
+                    setVisible(false);
                 }}
             >
                 <Animated.View

@@ -1,13 +1,17 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import color from '../../constant/color';
 import fonts from '../../constant/fonts';
 
-const TextInput = ({ label }) => {
+const TextInput = ({ label, onPressHandler, additionStyle }) => {
     return (
-        <View style={styles.buttonBox}>
+        <TouchableOpacity
+            activeOpacity={0.8}
+            style={{ ...styles.buttonBox, ...additionStyle }}
+            onPress={() => onPressHandler()}
+        >
             <Text style={styles.buttonText}>{label}</Text>
-        </View>
+        </TouchableOpacity>
     );
 };
 
@@ -17,7 +21,8 @@ const styles = StyleSheet.create({
         marginVertical: 20,
         width: '100%',
         backgroundColor: color.blueGray,
-        borderRadius: 5,
+        borderTopLeftRadius: 5,
+        borderTopRightRadius: 5,
     },
     buttonText: {
         fontFamily: fonts.medium,

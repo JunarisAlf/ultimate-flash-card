@@ -6,7 +6,7 @@ import LearnProgressChart from './LearnProgressChart';
 import color from '../../constant/color';
 import fonts from '../../constant/fonts';
 
-const LearnAndReview = () => {
+const LearnAndReview = ({ setStartReviewVisible }) => {
     return (
         <View>
             <View style={styles.boxContainer}>
@@ -75,7 +75,7 @@ const LearnAndReview = () => {
                     </Text>
                     <TouchableHighlight
                         underlayColor={'transparant'}
-                        onPress={() => console.log('clicked')}
+                        onPress={() => setStartReviewVisible(true)}
                     >
                         <View style={styles.button}>
                             <Text

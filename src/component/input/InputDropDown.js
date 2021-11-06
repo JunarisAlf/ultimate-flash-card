@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, TextInput } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 
@@ -6,10 +6,17 @@ import RadioBtn from './RadioBtn';
 import color from '../../constant/color';
 import fonts from '../../constant/fonts';
 
-const InputDropDown = ({ datas, label }) => {
+const InputDropDown = ({
+    datas,
+    label,
+    RdButton = true,
+    DefaultVal = '',
+    setSorts,
+    handler,
+}) => {
     const [active, setActive] = useState(false);
-    const [selectedLanguage, setSelectedLanguage] = useState();
-
+    const [selectedData, setSelectedData] = useState(DefaultVal);
+    useEffect(() => setSorts(handler(selectedData)), [selectedData]);
     return (
         <View style={styles.inputContainer}>
             <View style={{ flexDirection: 'row' }}>
@@ -21,7 +28,7 @@ const InputDropDown = ({ datas, label }) => {
                 >
                     {label}
                 </Text>
-                <RadioBtn active={active} setActive={setActive} />
+                {RdButton && <RadioBtn active={active} setActive={setActive} />}
             </View>
             {!active && (
                 <View style={styles.dropDown}>
@@ -30,18 +37,19 @@ const InputDropDown = ({ datas, label }) => {
                             fontFamily: fonts.regular,
                             color: color.gray3,
                         }}
-                        selectedValue={selectedLanguage}
-                        onValueChange={(itemValue, itemIndex) =>
-                            setSelectedLanguage(itemValue)
-                        }
+                        selectedValue={selectedData}
+                        onValueChange={(itemValue, itemIndex) => {
+                            setSelectedData(itemValue);
+                            // setSorts(handler(itemValue));
+                        }}
                     >
                         {datas.map((data) => (
                             <Picker.Item
                                 color={color.gray2}
                                 // fontFamily={fonts.regular}
                                 key={data.id}
-                                label={data.language}
-                                value={data.language}
+                                label={data.label}
+                                value={data.id}
                             />
                         ))}
                     </Picker>
@@ -80,4 +88,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default InputDropDown;
+export default React.memo(InputDropDown);

@@ -19,13 +19,19 @@ import CardStatus from './CardStatus';
 
 import fonts from '../../constant/fonts';
 import color from '../../constant/color';
+import filtersConst from '../../constant/filters';
 import cards from '../../Dummy/cardList';
 
 const GroubScreen = ({ navigation }) => {
     const [popupMenuVisible, setPopupMenuVisible] = useState(false);
     const [deleteConfirmationVisible, setDeleteConfirmationVisible] =
         useState(false);
+    const [editDeckVisible, setEditDeckVisible] = useState(false);
+    const [modalFilterVisible, setModalFilterVisible] = useState(false);
+    const [startReviewVisible, setStartReviewVisible] = useState(false);
     const [flipedAll, setFlipedAll] = useState(false);
+    const [filters, setFilters] = useState(filtersConst);
+    const [sort, setSort] = useState('ASC_DATE_CR');
 
     useEffect(() => {
         navigation.setOptions({
@@ -33,7 +39,6 @@ const GroubScreen = ({ navigation }) => {
             headerRight: () => <NavHeader pressAction={setPopupMenuVisible} />,
         });
     }, [navigation]);
-
     return (
         <View style={styles.container}>
             <DeckModal
@@ -41,9 +46,19 @@ const GroubScreen = ({ navigation }) => {
                 setPopupMenuVisible={setPopupMenuVisible}
                 deleteConfirmationVisible={deleteConfirmationVisible}
                 setDeleteConfirmationVisible={setDeleteConfirmationVisible}
+                editDeckVisible={editDeckVisible}
+                setEditDeckVisible={setEditDeckVisible}
+                startReviewVisible={startReviewVisible}
+                setStartReviewVisible={setStartReviewVisible}
+                filters={filters}
+                setFilters={setFilters}
+                modalFilterVisible={modalFilterVisible}
+                setModalFilterVisible={setModalFilterVisible}
+                sort={sort}
+                setSort={setSort}
             />
 
-            <LearnAndReview />
+            <LearnAndReview setStartReviewVisible={setStartReviewVisible} />
 
             <View style={styles.heading}>
                 <Text style={styles.yourCardsText}>
@@ -70,7 +85,10 @@ const GroubScreen = ({ navigation }) => {
                     />
                 </View>
 
-                <TouchableOpacity style={styles.filter}>
+                <TouchableOpacity
+                    style={styles.filter}
+                    onPress={() => setModalFilterVisible(true)}
+                >
                     <MaterialIcons name="tune" size={24} color={color.gray3} />
                 </TouchableOpacity>
             </View>

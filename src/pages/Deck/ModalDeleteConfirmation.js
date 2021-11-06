@@ -8,7 +8,7 @@ const ModalDeleteConfirmation = (props) => {
     return (
         <ConfirmationModal {...props}>
             <Text style={styles.confirmationText}>
-                Are You Sure Want To Delete This Groub?
+                Are You Sure Want To Delete This Deck?
             </Text>
             <View style={styles.optionsContainer}>
                 <Text style={styles.optionNo}>No</Text>

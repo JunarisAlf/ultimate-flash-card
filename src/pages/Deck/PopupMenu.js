@@ -8,7 +8,12 @@ import fonts from '../../constant/fonts';
 const PopupMenu = (props) => {
     return (
         <PopUpMenuThemplate {...props}>
-            <Text style={styles.modalText}>Edit</Text>
+            <Text
+                onPress={() => props.setEditDeckVisible(true)}
+                style={styles.modalText}
+            >
+                Edit
+            </Text>
             <Text
                 onPress={() => props.setDeleteConfirmationVisible(true)}
                 style={styles.modalText}

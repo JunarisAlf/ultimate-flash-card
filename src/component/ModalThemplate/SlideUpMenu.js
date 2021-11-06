@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import color from '../../constant/color';
 
-const ModalAddDeck = ({ children, visible, setModalAddDeckVisible }) => {
+const ModalAddDeck = ({ children, visible, setVisible }) => {
     const opacityZero = useRef(new Animated.Value(0)).current;
     const fadeIn = () => {
         Animated.timing(opacityZero, {
@@ -37,7 +37,7 @@ const ModalAddDeck = ({ children, visible, setModalAddDeckVisible }) => {
                 onPress={() => {
                     fadeOut();
                     setTimeout(() => {
-                        setModalAddDeckVisible(false);
+                        setVisible(false);
                     }, 200);
                 }}
             >
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
         backgroundColor: color.black,
     },
     modalContainer: {
-        height: 200,
+        // height: 200,
         position: 'absolute',
         paddingHorizontal: 20,
         bottom: 0,
@@ -80,6 +80,7 @@ const styles = StyleSheet.create({
         marginTop: 10,
         borderRadius: 10,
         backgroundColor: color.gray5,
+        marginBottom: 15,
     },
     form: {
         flex: 1,

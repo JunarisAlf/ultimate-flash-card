@@ -7,12 +7,10 @@ import {
 } from 'react-native';
 import color from '../../constant/color';
 
-const PopupMenu = ({ visible, setPopupMenuVisible, children }) => {
+const PopupMenu = ({ visible, setVisible, children }) => {
     return (
         <Modal visible={visible} transparent={true}>
-            <TouchableWithoutFeedback
-                onPress={() => setPopupMenuVisible(false)}
-            >
+            <TouchableWithoutFeedback onPress={() => setVisible(false)}>
                 <View style={styles.modalOutside} />
             </TouchableWithoutFeedback>
             <View style={styles.modalContainer}>{children}</View>
