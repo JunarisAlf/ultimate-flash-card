@@ -26,10 +26,13 @@ const GroubScreen = ({ navigation }) => {
     const [popupMenuVisible, setPopupMenuVisible] = useState(false);
     const [deleteConfirmationVisible, setDeleteConfirmationVisible] =
         useState(false);
+    const [deleteCardConfirmationVisible, setDeleteCardConfirmationVisible] =
+        useState(false);
     const [editDeckVisible, setEditDeckVisible] = useState(false);
     const [modalFilterVisible, setModalFilterVisible] = useState(false);
     const [startReviewVisible, setStartReviewVisible] = useState(false);
     const [flipedAll, setFlipedAll] = useState(false);
+    const [cardMenuVisible, setCardMenuVisible] = useState(false);
     const [filters, setFilters] = useState(filtersConst);
     const [sort, setSort] = useState('ASC_DATE_CR');
 
@@ -56,6 +59,12 @@ const GroubScreen = ({ navigation }) => {
                 setModalFilterVisible={setModalFilterVisible}
                 sort={sort}
                 setSort={setSort}
+                cardMenuVisible={cardMenuVisible}
+                setCardMenuVisible={setCardMenuVisible}
+                deleteCardConfirmationVisible={deleteCardConfirmationVisible}
+                setDeleteCardConfirmationVisible={
+                    setDeleteCardConfirmationVisible
+                }
             />
 
             <LearnAndReview setStartReviewVisible={setStartReviewVisible} />
@@ -94,7 +103,6 @@ const GroubScreen = ({ navigation }) => {
             </View>
 
             <CardStatus />
-
             <FlatList
                 style={{
                     width: '100%',
@@ -103,7 +111,11 @@ const GroubScreen = ({ navigation }) => {
                 keyExtractor={(card) => '_' + card.key + uuid()}
                 data={cards}
                 renderItem={({ item }) => (
-                    <Card card={item} flipedAll={flipedAll} />
+                    <Card
+                        card={item}
+                        flipedAll={flipedAll}
+                        setCardMenuVisible={setCardMenuVisible}
+                    />
                 )}
                 nestedScrollEnabled={true}
             />

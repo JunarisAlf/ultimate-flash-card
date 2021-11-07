@@ -11,27 +11,27 @@ import color from '../../constant/color';
 import { Entypo, MaterialIcons } from '@expo/vector-icons';
 import fonts from '../../constant/fonts';
 
-const Card = ({ card, flipedAll }) => {
-    const [fliped, setFliped] = useState(false);
+const Card = ({ card, flipedAll, setCardMenuVisible }) => {
+    const [fliped, setFliped] = useState(flipedAll);
     // useEffect(() => {
-    //     console.log('EFFECT');
+    //     // console.log('EFFECT');
+    //     flipAnimation();
     // }, [fliped]);
 
     const data = fliped ? card.back : card.front;
-    // const value = useRef(new Animated.Value(0)).current;
-    // const flipAnimation = () => {
-    //     Animated.timing(value, {
-    //         toValue: 180,
-    //         duration: 300,
-    //         useNativeDriver: 'false',
-    //     }).start(() => value.setValue(0));
-    // };
-    // const rotate = value.interpolate({
-    //     inputRange: [0, 180, 180],
-    //     outputRange: ['0deg', '180deg', '0deg'],
-    //     // extrapolateRight: 'clamp',
-    // });
-    const rotate = '0deg';
+    const value = useRef(new Animated.Value(0)).current;
+    const flipAnimation = () => {
+        Animated.timing(value, {
+            toValue: 180,
+            duration: 300,
+            useNativeDriver: 'false',
+        }).start(() => value.setValue(0));
+    };
+    const rotate = value.interpolate({
+        inputRange: [0, 180, 180],
+        outputRange: ['0deg', '180deg', '0deg'],
+        extrapolateRight: 'clamp',
+    });
     return (
         <View style={styles.container}>
             {card.status === 'none' && (
@@ -68,6 +68,7 @@ const Card = ({ card, flipedAll }) => {
                 activeOpacity={0.2}
                 style={{ flex: 1 }}
                 onPress={() => {
+                    flipAnimation();
                     setFliped(!fliped);
                 }}
             >
@@ -100,6 +101,7 @@ const Card = ({ card, flipedAll }) => {
                             name="dots-three-vertical"
                             size={14}
                             color={color.white}
+                            onPress={() => setCardMenuVisible(true)}
                         />
                         <TouchableOpacity style={styles.circleIconBg}>
                             <MaterialIcons

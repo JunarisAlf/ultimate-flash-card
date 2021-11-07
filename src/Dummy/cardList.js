@@ -18,7 +18,7 @@ export default [
     },
     {
         key: 1,
-        status: 'easy',
+        status: 'hard',
         image: require('../../assets/card-image/001.jpeg'),
         front: {
             primaryText: 'Buku',
@@ -35,7 +35,7 @@ export default [
     },
     {
         key: 1,
-        status: 'easy',
+        status: 'fail',
         image: require('../../assets/card-image/001.jpeg'),
         front: {
             primaryText: 'Buku',
@@ -52,7 +52,7 @@ export default [
     },
     {
         key: 1,
-        status: 'easy',
+        status: 'none',
         image: require('../../assets/card-image/001.jpeg'),
         front: {
             primaryText: 'Buku',

@@ -16,7 +16,7 @@ const InputDropDown = ({
 }) => {
     const [active, setActive] = useState(false);
     const [selectedData, setSelectedData] = useState(DefaultVal);
-    useEffect(() => setSorts(handler(selectedData)), [selectedData]);
+    // useEffect(() => setSorts(handler(selectedData)), [selectedData]);
     return (
         <View style={styles.inputContainer}>
             <View style={{ flexDirection: 'row' }}>

@@ -5,6 +5,8 @@ import ModalDeleteConfirmation from './ModalDeleteConfirmation';
 import ModalEditDeck from './ModalEditDeck';
 import ModalStartReview from './ModalStartReview';
 import ModalFilter from './ModalFilter';
+import ModalCardMenu from './ModalCardMenu';
+import ModalDeleteCardConfirmation from './ModalDeleteCardConfirmation';
 
 const DeckModal = ({
     setPopupMenuVisible,
@@ -21,6 +23,10 @@ const DeckModal = ({
     setFilters,
     sort,
     setSort,
+    cardMenuVisible,
+    setCardMenuVisible,
+    deleteCardConfirmationVisible,
+    setDeleteCardConfirmationVisible,
 }) => {
     return (
         <View>
@@ -61,6 +67,19 @@ const DeckModal = ({
                     setVisible={setStartReviewVisible}
                     visible={startReviewVisible}
                     value="Daily Word Vocabulary"
+                />
+            )}
+            {cardMenuVisible && (
+                <ModalCardMenu
+                    setVisible={setCardMenuVisible}
+                    visible={cardMenuVisible}
+                    setDeleteConfirmation={setDeleteCardConfirmationVisible}
+                />
+            )}
+            {deleteCardConfirmationVisible && (
+                <ModalDeleteCardConfirmation
+                    visible={deleteCardConfirmationVisible}
+                    setVisible={setDeleteCardConfirmationVisible}
                 />
             )}
         </View>
